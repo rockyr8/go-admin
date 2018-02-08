@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>主菜单</title>
+  <title>玩家管理</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -55,7 +55,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          主菜单
+          账户管理
           <!-- <small>賬戶列表</small> -->
         </h1>
         <!-- <ol class="breadcrumb">
@@ -69,11 +69,121 @@
       <section class="content">
         <div class="row">
           <div class="col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title">
+                  查询条件
+                </h3>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="true" class="btn btn-success pull-right">
+                  <i class="glyphicon glyphicon-chevron-down pull-right"></i>
+                </a>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
+                <div class="box-body">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>玩家名:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-user"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>手机:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>电话:</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-tty"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>玩家状态</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-user-times"></i>
+                          </div>
+                          <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <option selected="selected"></option>
+                            <option>正常</option>
+                            <option>禁用</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>注册时间:</label>
+
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="time_reg">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>最后登录时间:</label>
+
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                          </div>
+                          <input type="text" class="form-control pull-right" id="time_lastlogin">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <a class="btn btn-success pull-right">
+                    <i class="fa fa-search"></i> 查询
+                  </a>
+                </div>
+              </div>
+              <!-- /.box-body -->
+            </div>
             <div class="box box-primary">
               <div class="box-header">
                 <h3 class="box-title">数据内容</h3>
                 <a class="btn pull-right" onclick="openadd()">
                   <i class="fa fa-user-plus"></i> 新增
+                </a>
+                <a class="btn pull-right">
+                  <i class="fa fa-file-excel-o"></i> 导出
+                </a>
+                <a class="btn pull-right">
+                  <i class="fa fa-print"></i> 打印
                 </a>
               </div>
               <!-- /.box-header -->
@@ -81,10 +191,12 @@
                 <table id="maintable" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>名称</th>
-                      <th>图标</th>
-                      <th>链接</th>
+                      <th>注册时间</th>
+                      <th>用户名</th>
+                      <th>金币</th>
+                      <th>钻石</th>
+                      <th>昵称</th>
+                      <th>状态</th>
                       <th>操作</th>
                     </tr>
                   </thead>
@@ -166,6 +278,7 @@
     </div>
   </div>
   <!-- ./Modal -->
+
   <!-- Addnew Modal -->
   <div class="modal fade" id="newaccountModal" tabindex="-1" role="dialog" aria-labelledby="newaccountModalLabel">
     <div class="modal-dialog" role="document">
@@ -174,20 +287,12 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="newaccountModalLabel">添加主菜单</h4>
+          <h4 class="modal-title" id="newaccountModalLabel">上分金币</h4>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label class="control-label">名称:</label>
-            <input type="text" class="form-control" id="nickname">
-          </div>
-          <div class="form-group">
-            <label class="control-label">图标:</label>
-            <input type="text" class="form-control" id="ico">
-          </div>
-          <div class="form-group">
-            <label class="control-label">链接:</label>
-            <input type="text" class="form-control" id="url">
+            <label class="control-label">金币:</label>
+            <input type="text" class="form-control" id="gold">
           </div>
           <input type="hidden" id="modifyuid" >
         </div>
@@ -200,37 +305,6 @@
   </div>
   <!-- ./Addnew Modal -->
 
-  <!-- success alert Modal -->
-  <div class="modal modal-success fade" id="modal-success" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加成功</h4>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- ./ success alert Modal -->
-
-  <!-- danger alert Modal -->
-  <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加失败</h4>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
- <!-- ./ danger alert Modal -->
 
   </div>
   <!-- ./wrapper -->
@@ -263,14 +337,16 @@
   <!-- page script -->
   <script>
     $(function () {
+      $('#time_reg').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'YYYY/MM/DD h:mm A' })
+      $('#time_lastlogin').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'YYYY/MM/DD h:mm A' })
       init();
-    })
+    });
 
     function init() {
-      $('#myModal').modal('show')
+      $('#myModal').modal('show');
       $.ajax({
         type: "POST",
-        url: apiurl + "/v2/menu/menulist",
+        url: apiurl + "/v2/player",
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
         data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token") },
         success: function (data, status) {
@@ -282,7 +358,9 @@
           else if (data != "") {
             $("#tabledata").html("");
             $.each(JSON.parse(data), function (n, value) {
-              $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.nickname + "</td><td><i class=\"" + value.ico + "\"></i></td><td>" + value.url + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-ban-circle\"></i></td></tr>");
+              var state = value.sm_status == "0" ? "正常" : "禁用";
+              var cl  = value.sm_status == "1" ?"glyphicon glyphicon-ok":"glyphicon glyphicon-ban-circle";
+              $("#tabledata").append("<tr><td>" + value.sm_regtime + "</td><td>" + value.sm_account + "</td><td>" + value.sm_gold + "</td><td>" + value.sm_diamond + "</td><td>" + value.sm_nickname + "</td><td>" + state + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"openadd(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\""+cl+"\"></i></td></tr>");
             });
             $('#maintable').DataTable();
             $('#myModal').modal('hide')
@@ -291,28 +369,18 @@
       });
     }
 
-    var IsAdd=false;
-    function openadd(){
-      $("#newaccountModalLabel").html("添加主菜单");
+    function openadd(id){
+      $("#modifyuid").val(id);
       $('#newaccountModal').modal('show');
-      IsAdd=true
     }
 
-    function add(){
-      var operate=0;
-      var urls="/v2/menu/add";
-      if(!IsAdd){
-        operate=1;
-        urls="/v2/menu/modify";
-      }
-      var nickname = $("#nickname").val().trim();
-      var url = $("#url").val().trim();
-      var ico = $("#ico").val().trim();
+    function add() {
+
       $.ajax({
         type: "POST",
-        url: apiurl + urls,
+        url: apiurl + "/v2/player/addpoints",
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'nickname':nickname,'ico':ico,'url':url,'operate':operate,'id':$("#modifyuid").val() },
+        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'id':$("#modifyuid").val(),'points':$("#gold").val().trim() },
         success: function (data, status) {
           // console.log(data);
           if (data == "Unauthorized") {
@@ -321,48 +389,9 @@
           }
           else if (data == "SUCCESS") {
             alert("操作成功！");
-            $('#newaccountModal').modal('hide');
-//            $('#modal-success').modal('show');
-            clear();
             init();
-          }else{
-            alert("操作失败！"+data);
-//            $('#modal-danger').modal('show');
-          }
-        }
-      });
-    }
+            $('#newaccountModal').modal('hide');
 
-    function clear(){
-      $("#ico").val("");
-      $("#nickname").val("");
-      $("#url").val("");
-    }
-
-    function modify(id) {
-      // console.log("modify id is " + id);
-      $("#modifyuid").val(id);
-
-      $.ajax({
-        type: "POST",
-        url: apiurl + "/v2/menu/menulist",
-        contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'id':id },
-        success: function (data, status) {
-          // console.log(data);
-          if (data == "Unauthorized") {
-            location.href = validurl;
-            return;
-          }
-          else if (data != "") {
-            $.each(JSON.parse(data), function (n, value) {
-              $("#nickname").val(value.nickname);
-              $("#ico").val(value.ico);
-              $("#url").val(value.url);
-            });
-            $("#newaccountModalLabel").html("修改主菜单");
-            $('#newaccountModal').modal('show');
-            IsAdd=false
           }
         }
       });
@@ -372,13 +401,13 @@
     var del_id = 0;
     function del(id) {
       $('#sp_confirm').text("确定要禁用选择的账户吗？");
-      $('#confirmModal').modal('show');
+      $('#confirmModal').modal('show')
       del_id=id;
-      console.log("del id is " + id);
+//      console.log("del id is " + id);
     }
     function delSure() {
-      $('#confirmModal').modal('hide');
-      console.log("del_id is " + del_id);
+      $('#confirmModal').modal('hide')
+//      console.log("del_id is " + del_id);
     }
 
   </script>

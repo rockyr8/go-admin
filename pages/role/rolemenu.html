@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>角色权限</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/flat/blue.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header id="head" class="main-header"></header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" >
+      <ul id="menuleft" class="sidebar-menu" data-widget="tree">
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        角色权限
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-3">
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">主菜单</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked" id="mainmenu">
+                <!--<li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox-->
+                  <!--<span class="label label-primary pull-right">12</span></a></li>-->
+                <!--<li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>-->
+                <!--<li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>-->
+                <!--<li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>-->
+                <!--</li>-->
+                <!--<li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>-->
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">其他</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#" onclick="getchild(0)"><i class="fa fa-circle-o text-red"></i>操作<span class="label label-primary pull-right" id="operatenum">12</span></a></li>
+                <!--<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> 修改</a></li>-->
+                <!--<li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> 明细</a></li>-->
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">
+                角色查询
+              </h3>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="true">
+                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
+              </a>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
+              <div class="box-body">
+                <div class="form-group">
+                  <select id="seRole" class="form-control select2" style="width: 100%;">
+                  </select>
+                </div>
+              </div>
+              <div class="box-footer">
+                <a class="btn btn-success pull-right" onclick="getownermenu()">
+                  <i class="fa fa-search"></i> 查询
+                </a>
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">子菜单</h3>
+              <!-- /.box-tools -->
+              <button type="button" class="btn btn-default  pull-right"><i class="fa fa-save" onclick="modify()"></i>
+              </button>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                <!--<button type="button" class="btn btn-default btn-sm checkbox-toggle"><i id="checkall" class="fa fa-square-o"></i>-->
+                <!--</button>-->
+
+                <!-- /.pull-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody id="tabledata">
+                  <!--<tr>-->
+                    <!--<td><input type="checkbox"></td>-->
+                    <!--<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>-->
+                    <!--<td class="mailbox-name">玩家管理</td>-->
+                    <!--<td class="mailbox-subject">/pages/account/password.html</td>-->
+                    <!--<td class="mailbox-subject">/v2/account/modifypwd</td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td><input type="checkbox"></td>-->
+                    <!--<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>-->
+                    <!--<td class="mailbox-name"><a href="read-mail.html">玩家管理</a></td>-->
+                    <!--<td class="mailbox-subject">/pages/account/password.html</td>-->
+                    <!--<td class="mailbox-subject">/v2/account/modifypwd</td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td><input type="checkbox"></td>-->
+                    <!--<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>-->
+                    <!--<td class="mailbox-name"><a href="read-mail.html">玩家管理</a></td>-->
+                    <!--<td class="mailbox-subject">/pages/account/password.html</td>-->
+                    <!--<td class="mailbox-subject">/v2/account/modifypwd</td>-->
+                  <!--</tr>-->
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer id="footer" class="main-footer">
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside id="sidebar" class="control-sidebar control-sidebar-dark"></aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Loading</h4>
+      </div>
+      <div class="modal-body">
+        正在载入请稍后......
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ./Modal -->
+
+<input type="hidden" id="checkids">
+<input type="hidden" id="checkidstemp">
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- iCheck -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
+<!-- Select2 -->
+<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- AdminLTE for common -->
+<script src="../../dist/js/const.js"></script>
+<script src="../../dist/js/common.js"></script>
+
+<!-- Page Script -->
+<script>
+  $(function () {
+
+    initSelect();
+    initMainMenu();
+
+
+    $(".select2").select2();
+
+    //Enable iCheck plugin for checkboxes
+    //iCheck for checkbox and radio inputs
+    $('.mailbox-messages input[type="checkbox"]').iCheck({
+      checkboxClass: 'icheckbox_flat-blue',
+      radioClass: 'iradio_flat-blue'
+    });
+
+    //Enable check and uncheck all functionality
+    $(".checkbox-toggle").click(function () {
+      var clicks = $(this).data('clicks');
+      if (clicks) {
+        //Uncheck all checkboxes
+        $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+        $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
+        $("#checkidstemp").val("");
+      } else {
+        //Check all checkboxes
+        $(".mailbox-messages input[type='checkbox']").iCheck("check");
+        $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
+        $("#checkidstemp").val(ids);
+      }
+      $(this).data("clicks", !clicks);
+    });
+  });
+
+    function initMainMenu(){
+      $('#myModal').modal('show')
+      $.ajax({
+        type: "POST",
+        url: apiurl + "/v2/menu/menulist",
+        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'num':0 },
+        success: function (data, status) {
+          // console.log(data);
+          if (data == "Unauthorized") {
+            location.href = validurl
+            return;
+          }
+          else if (data != "") {
+            $("#mainmenu").html("")
+            var initclass="active"
+            var i=0;
+            $.each(JSON.parse(data), function (n, value) {
+              if (i==0){
+                $("#operatenum").html(value.num);
+                i++;
+              }else {
+                $("#mainmenu").append("<li id=\"li" + value.id + "\" class=\"" + initclass + "\"><a href=\"javascript:void(0)\" onclick='getchild(" + value.id + ")'><i class=\"" + value.ico + "\"></i> " + value.nickname + " <span class=\"label label-warning pull-right\">" + value.num + "</span></a></li>");
+                initclass = "";
+              }
+            });
+            $('#myModal').modal('hide');
+          }
+        }
+      });
+    }
+    var oldid=1;
+    var ids="";
+    function getchild(id){
+      $.ajax({
+        type: "POST",
+        url: apiurl + "/v2/menu/menulistc",
+        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'classid':id },
+        success: function (data, status) {
+          // console.log(data);
+          if (data == "Unauthorized") {
+            location.href = validurl;
+          }
+          else if (data != "") {
+//            $("#checkall").removeClass("fa-check-square-o").addClass('fa-square-o');
+//            $("#li"+oldid).removeClass("active");
+//            $("#li"+id).addClass("active");
+//            oldid=id;
+            $("#tabledata").html("");
+//            ids="";
+            var alreadycheck=$("#checkids").val();
+            $.each(JSON.parse(data), function (n, value) {
+                var checked=alreadycheck.indexOf("~"+value.id+",")>-1?"checked":"";
+                $("#tabledata").append('<tr><td><input '+checked+' type="checkbox" id=\"ck'+value.id+'\" onclick="test('+value.id+')"></td><td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td><td class="mailbox-name">'+value.nickname+'</td><td class="mailbox-subject">'+value.authurl+'</td><td class="mailbox-subject">'+value.authurl+'</td></tr>');
+//                ids+="~"+value.id+",|";
+            });
+          }
+        }
+      });
+    }
+
+  function test(id){
+
+    var oldstr =  $("#checkids").val();
+    var removeid="~"+id+",";
+//    console.log(oldstr);
+//    console.log(removeid);
+    var newstr = oldstr.replace(removeid,'');
+    if($("#ck"+id).prop('checked')) {
+      newstr+="~"+id+",";
+    }
+    $("#checkids").val(newstr);
+  }
+
+  //暂时没用
+  function merge() {
+
+    var tmepids=$("#checkidstemp").val().split("|");
+    var ids =  $("#checkids").val();
+    var addIds="";
+    $.each(tmepids,function(key,val){
+      if(ids.indexOf("~"+val+",")< 0){
+        addIds+=val;
+      }
+    });
+    $("#checkids").val(ids+addIds);
+
+  }
+
+  function initSelect(){
+    $.ajax({
+      type: "POST",
+      url: apiurl + "/v2/role",
+      contentType: "application/x-www-form-urlencoded;charset=utf-8",
+      data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token") },
+      success: function (data, status) {
+        // console.log(data);
+        if (data == "Unauthorized") {
+          location.href = validurl;
+        }
+        else if (data != "") {
+          $("#seRole").html("");
+          $.each(JSON.parse(data), function (n, value) {
+            $("#seRole").append("<option value=\""+value.id+"\">"+value.nickname+"</option>");
+          });
+          var se = sessionStorage.getItem("setRole");
+          if (se != "" && se != null) {
+            $("#seRole").val(se);
+          }
+          //myself
+          getownermenu()
+        }
+      }
+    });
+  }
+
+  function getownermenu(){
+    $.ajax({
+      type: "POST",
+      url: apiurl + "/v2/role/menu",
+      contentType: "application/x-www-form-urlencoded;charset=utf-8",
+      data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'id':$("#seRole").val() },
+      success: function (data, status) {
+        // console.log(data);
+        if (data == "Unauthorized") {
+          location.href = validurl;
+        }
+        else if (data != "") {
+          var values='';
+          $.each(JSON.parse(data), function (n, value) {
+            values+="~"+value.menuid+",";
+          });
+          $("#checkids").val(values);
+        }
+      }
+    });
+  }
+
+  function modify(){
+
+    var ids=$("#checkids").val().replace(/~/g,'');
+    $.ajax({
+      type: "POST",
+      url: apiurl + "/v2/role/menu/modify",
+      contentType: "application/x-www-form-urlencoded;charset=utf-8",
+      data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'id':$("#seRole").val(),'ids':ids },
+      success: function (data, status) {
+        // console.log(data);
+        if (data == "Unauthorized") {
+          location.href = validurl;
+        }
+        else if (data == "SUCCESS") {
+          alert("修改成功！");
+        }
+      }
+    });
+  }
+
+
+
+</script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>主菜单</title>
+  <title>角色管理</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -55,14 +55,8 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          主菜单
-          <!-- <small>賬戶列表</small> -->
+          角色管理
         </h1>
-        <!-- <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol> -->
       </section>
 
       <!-- Main content -->
@@ -83,23 +77,14 @@
                     <tr>
                       <th>ID</th>
                       <th>名称</th>
-                      <th>图标</th>
-                      <th>链接</th>
+                      <th>启用</th>
                       <th>操作</th>
                     </tr>
                   </thead>
                   <tbody id="tabledata">
 
                   </tbody>
-                  <!-- <tfoot>
-                <tr>
-                  <th>姓名</th>
-                  <th>手机</th>
-                  <th>电话</th>
-                  <th>角色</th>
-                  <th>状态</th>
-                </tr>
-                </tfoot> -->
+
                 </table>
               </div>
               <!-- /.box-body -->
@@ -167,27 +152,24 @@
   </div>
   <!-- ./Modal -->
   <!-- Addnew Modal -->
-  <div class="modal fade" id="newaccountModal" tabindex="-1" role="dialog" aria-labelledby="newaccountModalLabel">
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="newaccountModalLabel">添加主菜单</h4>
+          <h4 class="modal-title" id="addModalLabel">新增</h4>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <label class="control-label">名称:</label>
             <input type="text" class="form-control" id="nickname">
           </div>
-          <div class="form-group">
-            <label class="control-label">图标:</label>
-            <input type="text" class="form-control" id="ico">
-          </div>
-          <div class="form-group">
-            <label class="control-label">链接:</label>
-            <input type="text" class="form-control" id="url">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="ckvaild" checked="checked"> 启用
+            </label>
           </div>
           <input type="hidden" id="modifyuid" >
         </div>
@@ -199,38 +181,6 @@
     </div>
   </div>
   <!-- ./Addnew Modal -->
-
-  <!-- success alert Modal -->
-  <div class="modal modal-success fade" id="modal-success" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加成功</h4>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- ./ success alert Modal -->
-
-  <!-- danger alert Modal -->
-  <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加失败</h4>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
- <!-- ./ danger alert Modal -->
 
   </div>
   <!-- ./wrapper -->
@@ -263,14 +213,14 @@
   <!-- page script -->
   <script>
     $(function () {
-      init();
-    })
+      init()
+    });
 
     function init() {
-      $('#myModal').modal('show')
+      $('#myModal').modal('show');
       $.ajax({
         type: "POST",
-        url: apiurl + "/v2/menu/menulist",
+        url: apiurl + "/v2/role",
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
         data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token") },
         success: function (data, status) {
@@ -282,7 +232,8 @@
           else if (data != "") {
             $("#tabledata").html("");
             $.each(JSON.parse(data), function (n, value) {
-              $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.nickname + "</td><td><i class=\"" + value.ico + "\"></i></td><td>" + value.url + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-ban-circle\"></i></td></tr>");
+              var state = value.valid == "1" ? "正常" : "禁用";
+              $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.nickname + "</td><td>" + state + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-th-list\"></i></td></tr>")
             });
             $('#maintable').DataTable();
             $('#myModal').modal('hide')
@@ -293,26 +244,26 @@
 
     var IsAdd=false;
     function openadd(){
-      $("#newaccountModalLabel").html("添加主菜单");
-      $('#newaccountModal').modal('show');
-      IsAdd=true
+      $("#addModalLabel").html("新增");
+      $('#addModal').modal('show');
+      IsAdd=true;
     }
 
     function add(){
       var operate=0;
-      var urls="/v2/menu/add";
+      var urls="/v2/role/add";
       if(!IsAdd){
         operate=1;
-        urls="/v2/menu/modify";
+        urls="/v2/role/modify";
       }
       var nickname = $("#nickname").val().trim();
-      var url = $("#url").val().trim();
-      var ico = $("#ico").val().trim();
+      var vaild = $("#ckvaild").prop('checked')==true?1:0;
+
       $.ajax({
         type: "POST",
         url: apiurl + urls,
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'nickname':nickname,'ico':ico,'url':url,'operate':operate,'id':$("#modifyuid").val() },
+        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'nickname':nickname,'valid':vaild,'operate':operate,'id':$("#modifyuid").val() },
         success: function (data, status) {
           // console.log(data);
           if (data == "Unauthorized") {
@@ -320,48 +271,46 @@
             return;
           }
           else if (data == "SUCCESS") {
-            alert("操作成功！");
-            $('#newaccountModal').modal('hide');
-//            $('#modal-success').modal('show');
+            $('#addModal').modal('hide');
             clear();
+            alert("操作成功");
             init();
           }else{
-            alert("操作失败！"+data);
-//            $('#modal-danger').modal('show');
+            alert("操作失敗");
           }
         }
       });
     }
 
     function clear(){
-      $("#ico").val("");
-      $("#nickname").val("");
-      $("#url").val("");
+      $("#nickname").val("")
+      $("#ckvaild").prop('checked',true)
     }
 
     function modify(id) {
       // console.log("modify id is " + id);
-      $("#modifyuid").val(id);
+      $("#modifyuid").val(id)
 
       $.ajax({
         type: "POST",
-        url: apiurl + "/v2/menu/menulist",
+        url: apiurl + "/v2/role",
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
         data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'id':id },
         success: function (data, status) {
           // console.log(data);
           if (data == "Unauthorized") {
             location.href = validurl;
-            return;
           }
           else if (data != "") {
             $.each(JSON.parse(data), function (n, value) {
-              $("#nickname").val(value.nickname);
-              $("#ico").val(value.ico);
-              $("#url").val(value.url);
+              $("#nickname").val(value.nickname)
+              if(value.valid=="1")
+                $("#ckvaild").prop('checked',true)
+              else
+                $("#ckvaild").prop('checked',false)
             });
-            $("#newaccountModalLabel").html("修改主菜单");
-            $('#newaccountModal').modal('show');
+            $("#addModalLabel").html("修改");
+            $('#addModal').modal('show');
             IsAdd=false
           }
         }
@@ -371,13 +320,17 @@
 
     var del_id = 0;
     function del(id) {
-      $('#sp_confirm').text("确定要禁用选择的账户吗？");
-      $('#confirmModal').modal('show');
-      del_id=id;
-      console.log("del id is " + id);
+//      $('#sp_confirm').text("确定要禁用选择的账户吗？");
+//      $('#confirmModal').modal('show')
+//      del_id=id;
+//      console.log("del id is " + id);
+
+      sessionStorage.setItem("setRole",id);
+      location.href = "rolemenu.html";
+
     }
     function delSure() {
-      $('#confirmModal').modal('hide');
+      $('#confirmModal').modal('hide')
       console.log("del_id is " + del_id);
     }
 

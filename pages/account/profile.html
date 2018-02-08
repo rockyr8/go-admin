@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>个人信息</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+
+    <!-- date picker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header id="head" class="main-header"></header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <ul id="menuleft" class="sidebar-menu" data-widget="tree">
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                当日统计
+                <!-- <small>賬戶列表</small> -->
+            </h1>
+            <!-- <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Data tables</li>
+          </ol> -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>0</h3>
+
+                            <p>充值金额</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>0<sup style="font-size: 20px">%</sup></h3>
+
+                            <p>分成比例</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>0</h3>
+
+                            <p>新增用户</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>0.00</h3>
+
+                            <p>账户余额</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-usd"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">基本信息</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>登录名:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" disabled id="username">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>姓名:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="nickname">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>手机:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="phone">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>电话:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-tty"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="tel">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>银行账户卡号:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-credit-card"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right"  id="accountcard">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>银行账户名称:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="accountname">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>开户行:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-bank"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="openbank">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>分行:</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-bank"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" id="branchbank">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary" onclick="save()">保存</button>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer id="footer" class="main-footer">
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside id="sidebar" class="control-sidebar control-sidebar-dark"></aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- confirm Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="confirmModalLabel">操作提示</h4>
+            </div>
+            <div class="modal-body">
+                <span id="sp_confirm"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="delSure()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./confirm Modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Loading</h4>
+            </div>
+            <div class="modal-body">
+                正在载入请稍后......
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./Modal -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="../dist/js/demo.js"></script> -->
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<!-- bootstrap time picker -->
+<!--<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>-->
+<!-- AdminLTE for common -->
+<script src="../../dist/js/const.js"></script>
+<script src="../../dist/js/common.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        initaccount();
+        initbank();
+    });
+
+    function save() {
+        var nickname = $("#nickname").val();
+        var tel = $("#tel").val();
+        var phone = $("#phone").val();
+        var accountName = $("#accountname").val();
+        var accountCardNum = $("#accountcard").val();
+        var openbank = $("#openbank").val();
+        var branchbank = $("#branchbank ").val();
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/account/bank/modify",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {
+                'uid': localStorage.getItem("uid"),
+                'token': localStorage.getItem("token"),
+                'userid': localStorage.getItem("uid"),
+                'nickname': nickname,
+                'tel': tel,
+                'phone': phone,
+                'name': accountName,
+                'card': accountCardNum,
+                'openbank': openbank,
+                'branchbank': branchbank
+            },
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data == "SUCCESS") {
+                    alert("操作成功！");
+                } else {
+                    alert("操作失败！" + data);
+                }
+            }
+        });
+    }
+
+
+    function initaccount() {
+        // console.log("modify id is " + id);
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/account/detail",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {
+                'uid': localStorage.getItem("uid"),
+                'token': localStorage.getItem("token"),
+                'userid': localStorage.getItem("uid")
+            },
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data != "") {
+                    $.each(JSON.parse(data), function (n, value) {
+                        $("#username").val(value.uname);
+                        $("#nickname").val(value.nickname);
+                        $("#tel").val(value.tel);
+                        $("#phone").val(value.phone);
+                    });
+                    $("#newaccountModalLabel").html("修改账户");
+                    $('#newaccountModal').modal('show');
+                    $('.openhide').hide();
+                    IsAdd = false;
+                }
+            }
+        });
+
+    }
+
+    function initbank() {
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/account/bank",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token")},
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data != "") {
+                    $.each(JSON.parse(data), function (n, value) {
+                        $("#accountcard").val(value.accountCardNum);
+                        $("#accountname").val(value.accountName);
+                        $("#openbank").val(value.openBank);
+                        $("#branchbank").val(value.branchBank);
+                    });
+                }
+            }
+        });
+
+    }
+
+
+</script>
+</body>
+
+</html>

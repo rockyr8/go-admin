@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>主菜单</title>
+  <title>子菜单</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -55,7 +55,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          主菜单
+          子菜单
           <!-- <small>賬戶列表</small> -->
         </h1>
         <!-- <ol class="breadcrumb">
@@ -82,9 +82,11 @@
                   <thead>
                     <tr>
                       <th>ID</th>
+                      <th>主菜单</th>
                       <th>名称</th>
-                      <th>图标</th>
-                      <th>链接</th>
+                      <th>接口地址</th>
+                      <th>访问地址</th>
+                      <th>启用</th>
                       <th>操作</th>
                     </tr>
                   </thead>
@@ -167,27 +169,44 @@
   </div>
   <!-- ./Modal -->
   <!-- Addnew Modal -->
-  <div class="modal fade" id="newaccountModal" tabindex="-1" role="dialog" aria-labelledby="newaccountModalLabel">
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title" id="newaccountModalLabel">添加主菜单</h4>
+          <h4 class="modal-title" id="addModalLabel">新增子菜单</h4>
         </div>
         <div class="modal-body">
+          <div class="form-group">
+            <label>主菜单</label>
+            <select id="seClass" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+              <option selected="selected" value="1">用戶管理</option>
+              <option value="2">222</option>
+              <option value="3">333</option>
+            </select>
+          </div>
           <div class="form-group">
             <label class="control-label">名称:</label>
             <input type="text" class="form-control" id="nickname">
           </div>
           <div class="form-group">
-            <label class="control-label">图标:</label>
-            <input type="text" class="form-control" id="ico">
+            <label class="control-label">接口地址:</label>
+            <input type="text" class="form-control" id="aurl">
           </div>
           <div class="form-group">
-            <label class="control-label">链接:</label>
+            <label class="control-label">访问地址:</label>
             <input type="text" class="form-control" id="url">
+          </div>
+          <div class="form-group">
+            <label class="control-label">优先级:</label>
+            <input type="text" class="form-control" id="sort" value="1">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="ckvaild" checked="checked"> 启用
+            </label>
           </div>
           <input type="hidden" id="modifyuid" >
         </div>
@@ -199,38 +218,6 @@
     </div>
   </div>
   <!-- ./Addnew Modal -->
-
-  <!-- success alert Modal -->
-  <div class="modal modal-success fade" id="modal-success" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加成功</h4>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- ./ success alert Modal -->
-
-  <!-- danger alert Modal -->
-  <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加失败</h4>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
- <!-- ./ danger alert Modal -->
 
   </div>
   <!-- ./wrapper -->
@@ -264,10 +251,10 @@
   <script>
     $(function () {
       init();
-    })
+      initSelect();
+    });
 
-    function init() {
-      $('#myModal').modal('show')
+    function initSelect(){
       $.ajax({
         type: "POST",
         url: apiurl + "/v2/menu/menulist",
@@ -280,9 +267,34 @@
             return;
           }
           else if (data != "") {
+            $("#seClass").html("");
+            $("#seClass").append("<option value=\"0\">-</option>");
+            $.each(JSON.parse(data), function (n, value) {
+              $("#seClass").append("<option value=\""+value.id+"\">"+value.nickname+"</option>");
+            });
+          }
+        }
+      });
+    }
+
+    function init() {
+      $('#myModal').modal('show');
+      $.ajax({
+        type: "POST",
+        url: apiurl + "/v2/menu/menulistc",
+        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token") },
+        success: function (data, status) {
+          // console.log(data);
+          if (data == "Unauthorized") {
+            location.href = validurl;
+            return;
+          }
+          else if (data != "") {
             $("#tabledata").html("");
             $.each(JSON.parse(data), function (n, value) {
-              $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.nickname + "</td><td><i class=\"" + value.ico + "\"></i></td><td>" + value.url + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-ban-circle\"></i></td></tr>");
+              var state = value.valid == "1" ? "正常" : "禁用";
+              $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.className + "</td><td>" + value.nickname + "</td><td>" + value.authurl + "</td><td>" + value.url + "</td><td>" + state + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-ban-circle\"></i></td></tr>")
             });
             $('#maintable').DataTable();
             $('#myModal').modal('hide')
@@ -293,26 +305,30 @@
 
     var IsAdd=false;
     function openadd(){
-      $("#newaccountModalLabel").html("添加主菜单");
-      $('#newaccountModal').modal('show');
-      IsAdd=true
+      $("#addModalLabel").html("新增主菜单");
+      $('#addModal').modal('show');
+      IsAdd=true;
     }
 
     function add(){
       var operate=0;
-      var urls="/v2/menu/add";
+      var urls="/v2/menu/addc";
       if(!IsAdd){
         operate=1;
-        urls="/v2/menu/modify";
+        urls="/v2/menu/modifyc";
       }
-      var nickname = $("#nickname").val().trim();
+      var classid = $("#seClass").val();
+      var aurl = $("#aurl").val().trim();
       var url = $("#url").val().trim();
-      var ico = $("#ico").val().trim();
+      var nickname = $("#nickname").val().trim();
+      var sort = $("#sort").val().trim();
+      var vaild = $("#ckvaild").prop('checked')==true?1:0;
+
       $.ajax({
         type: "POST",
         url: apiurl + urls,
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'nickname':nickname,'ico':ico,'url':url,'operate':operate,'id':$("#modifyuid").val() },
+        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'sort':sort,'nickname':nickname,'classid':classid,'aurl':aurl,'url':url,'valid':vaild,'operate':operate,'id':$("#modifyuid").val() },
         success: function (data, status) {
           // console.log(data);
           if (data == "Unauthorized") {
@@ -320,23 +336,24 @@
             return;
           }
           else if (data == "SUCCESS") {
-            alert("操作成功！");
-            $('#newaccountModal').modal('hide');
-//            $('#modal-success').modal('show');
+            $('#addModal').modal('hide');
             clear();
+            alert("操作成功");
             init();
           }else{
-            alert("操作失败！"+data);
-//            $('#modal-danger').modal('show');
+            alert("操作失敗");
           }
         }
       });
     }
 
     function clear(){
-      $("#ico").val("");
       $("#nickname").val("");
+      $("#aurl").val("");
       $("#url").val("");
+      $("#sort").val("1");
+      $("#ckvaild").prop('checked',true);
+      $("#seClass").val("0");
     }
 
     function modify(id) {
@@ -345,7 +362,7 @@
 
       $.ajax({
         type: "POST",
-        url: apiurl + "/v2/menu/menulist",
+        url: apiurl + "/v2/menu/menulistc",
         contentType: "application/x-www-form-urlencoded;charset=utf-8",
         data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'id':id },
         success: function (data, status) {
@@ -357,11 +374,18 @@
           else if (data != "") {
             $.each(JSON.parse(data), function (n, value) {
               $("#nickname").val(value.nickname);
-              $("#ico").val(value.ico);
+              $("#aurl").val(value.authurl);
               $("#url").val(value.url);
+              $("#sort").val(value.sort);
+              if(value.valid=="1")
+                $("#ckvaild").prop('checked',true);
+              else
+                $("#ckvaild").prop('checked',false);
+              $("#seClass").val(value.classID)
+
             });
-            $("#newaccountModalLabel").html("修改主菜单");
-            $('#newaccountModal').modal('show');
+            $("#addModalLabel").html("修改主菜单");
+            $('#addModal').modal('show');
             IsAdd=false
           }
         }

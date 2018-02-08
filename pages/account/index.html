@@ -2,266 +2,274 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>用户管理</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>用户管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
 
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- date picker -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
+<div class="wrapper">
 
     <header id="head" class="main-header"></header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar" >
-        <ul id="menuleft" class="sidebar-menu" data-widget="tree">
-        </ul>
-      </section>
-      <!-- /.sidebar -->
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <ul id="menuleft" class="sidebar-menu" data-widget="tree">
+            </ul>
+        </section>
+        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          账户管理
-          <!-- <small>賬戶列表</small> -->
-        </h1>
-        <!-- <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
-      </ol> -->
-      </section>
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                账户管理
+                <!-- <small>賬戶列表</small> -->
+            </h1>
+            <!-- <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Data tables</li>
+          </ol> -->
+        </section>
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title">
-                  查询条件
-                </h3>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="" aria-expanded="true" class="btn btn-success pull-right">
-                  <i class="glyphicon glyphicon-chevron-down pull-right"></i>
-                </a>
-              </div>
-              <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
-                <div class="box-body">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>用户名:</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-user"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="datepicker">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                查询条件
+                            </h3>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class=""
+                               aria-expanded="true" class="btn btn-success pull-right">
+                                <i class="glyphicon glyphicon-chevron-down pull-right"></i>
+                            </a>
                         </div>
-                        <!-- /.input group -->
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>手机:</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-phone"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="datepicker">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>电话:</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-tty"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="datepicker">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-                    </div>
+                        <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>登录名:</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="s_uname">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>姓名:</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="s_nickname">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>手机:</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="s_phone">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>电话:</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-tty"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="s_tel">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
 
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>角色</label>
-                        <div class="input-group">
-                          <div class="input-group-addon">
-                            <i class="fa fa-users"></i>
-                          </div>
-                          <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            <option selected="selected"></option>
-                            <option>管理员</option>
-                            <option>交易所</option>
-                            <option>会员单位</option>
-                            <option>代理</option>
-                            <option>经纪人</option>
-                          </select>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>角色</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-users"></i>
+                                                </div>
+                                                <select class="form-control select2 select2-hidden-accessible seRole"
+                                                        style="width: 100%;" tabindex="-1" aria-hidden="true"
+                                                        id="s_seRole">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>用户状态</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-user-times"></i>
+                                                </div>
+                                                <select class="form-control select2 select2-hidden-accessible"
+                                                        style="width: 100%;" tabindex="-1" aria-hidden="true"
+                                                        id="s_vaild">
+                                                    <option selected="selected"></option>
+                                                    <option value="1">正常</option>
+                                                    <option value="0">禁用</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>注册时间:</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <div class="input-daterange input-group" id="time_reg">
+                                                    <input type="text" class="input-sm form-control start"/>
+                                                    <span class="input-group-addon">to</span>
+                                                    <input type="text" class="input-sm form-control end"/>
+                                                </div>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>最后登录时间:</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </div>
+                                                <div class="input-daterange input-group" id="time_lastlogin">
+                                                    <input type="text" class="input-sm form-control start"/>
+                                                    <span class="input-group-addon">to</span>
+                                                    <input type="text" class="input-sm form-control end"/>
+                                                </div>
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <a class="btn btn-default" onclick="searchreset()">
+                                    <i class="glyphicon glyphicon-trash"></i> 清空
+                                </a>
+                                <a class="btn btn-success pull-right" onclick="init()">
+                                    <i class="fa fa-search"></i> 查询
+                                </a>
+                            </div>
                         </div>
-                      </div>
+                        <!-- /.box-body -->
                     </div>
-
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>所属上级</label>
-                        <div class="input-group">
-                          <div class="input-group-addon">
-                            <i class="fa fa-user-secret"></i>
-                          </div>
-                          <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            <option selected="selected"></option>
-                            <option>管理员</option>
-                            <option>交易所</option>
-                            <option>会员单位</option>
-                            <option>代理</option>
-                            <option>经纪人</option>
-                          </select>
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">数据内容</h3>
+                            <a class="btn pull-right" onclick="openadd()">
+                                <i class="fa fa-user-plus"></i> 新增
+                            </a>
+                            <!--<a class="btn pull-right">-->
+                            <!--<i class="fa fa-file-excel-o"></i> 导出-->
+                            <!--</a>-->
+                            <!--<a class="btn pull-right">-->
+                            <!--<i class="fa fa-print"></i> 打印-->
+                            <!--</a>-->
                         </div>
-                      </div>
-                    </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="maintable" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>登录名</th>
+                                    <th>姓名</th>
+                                    <th>手机</th>
+                                    <th>电话</th>
+                                    <th>注册时间</th>
+                                    <th>最后登录时间</th>
+                                    <th>角色</th>
+                                    <th>分成比例%</th>
+                                    <th>上级</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tabledata">
 
-                    <div class="col-md-2">
-                      <div class="form-group">
-                        <label>用户状态</label>
-                        <div class="input-group">
-                          <div class="input-group-addon">
-                            <i class="fa fa-user-times"></i>
-                          </div>
-                          <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            <option selected="selected"></option>
-                            <option>正常</option>
-                            <option>禁用</option>
-                          </select>
+                                </tbody>
+                                <!-- <tfoot>
+                              <tr>
+                                <th>姓名</th>
+                                <th>手机</th>
+                                <th>电话</th>
+                                <th>角色</th>
+                                <th>状态</th>
+                              </tr>
+                              </tfoot> -->
+                            </table>
                         </div>
-                      </div>
+                        <!-- /.box-body -->
                     </div>
+                    <!-- /.box -->
 
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>注册时间:</label>
 
-                        <div class="input-group">
-                          <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="time_reg">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label>最后登录时间:</label>
-
-                        <div class="input-group">
-                          <div class="input-group-addon">
-                            <i class="fa fa-clock-o"></i>
-                          </div>
-                          <input type="text" class="form-control pull-right" id="time_lastlogin">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-                    </div>
-
-                  </div>
+                    <!-- /.box -->
                 </div>
-                <div class="box-footer">
-                  <a class="btn btn-success pull-right">
-                    <i class="fa fa-search"></i> 查询
-                  </a>
-                </div>
-              </div>
-              <!-- /.box-body -->
+                <!-- /.col -->
             </div>
-            <div class="box box-primary">
-              <div class="box-header">
-                <h3 class="box-title">数据内容</h3>
-                <a class="btn pull-right" onclick="openadd()">
-                  <i class="fa fa-user-plus"></i> 新增
-                </a>
-                <a class="btn pull-right">
-                  <i class="fa fa-file-excel-o"></i> 导出
-                </a>
-                <a class="btn pull-right">
-                  <i class="fa fa-print"></i> 打印
-                </a>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table id="maintable" class="table table-bordered table-hover">
-                  <thead>
-                    <tr>
-                      <th>姓名</th>
-                      <th>手机</th>
-                      <th>电话</th>
-                      <th>角色</th>
-                      <th>状态</th>
-                    </tr>
-                  </thead>
-                  <tbody id="tabledata">
-
-                  </tbody>
-                  <!-- <tfoot>
-                <tr>
-                  <th>姓名</th>
-                  <th>手机</th>
-                  <th>电话</th>
-                  <th>角色</th>
-                  <th>状态</th>
-                </tr>
-                </tfoot> -->
-                </table>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-
-
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </section>
-      <!-- /.content -->
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     <footer id="footer" class="main-footer">
@@ -273,309 +281,421 @@
     <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
-  </div>
-
-  <!-- confirm Modal -->
-  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel">
+</div>
+<!-- confirm Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="confirmModalLabel">操作提示</h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="confirmModalLabel">操作提示</h4>
+            </div>
+            <div class="modal-body">
+                <span id="sp_confirm"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="delSure()">确认</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <span id="sp_confirm"></span>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" onclick="delSure()">确认</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- ./confirm Modal -->
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+</div>
+<!-- ./confirm Modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel">Loading</h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Loading</h4>
+            </div>
+            <div class="modal-body">
+                正在载入请稍后......
+            </div>
         </div>
-        <div class="modal-body">
-          正在载入请稍后......
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- ./Modal -->
-  <!-- Addnew Modal -->
-  <div class="modal fade" id="newaccountModal" tabindex="-1" role="dialog" aria-labelledby="newaccountModalLabel">
+</div>
+<!-- ./Modal -->
+<!-- Addnew Modal -->
+<div class="modal fade" id="newaccountModal" tabindex="-1" role="dialog" aria-labelledby="newaccountModalLabel">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="newaccountModalLabel">添加账户</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">用户名:</label>
-            <input type="text" class="form-control" id="username">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">密码:</label>
-            <input type="text" class="form-control" id="pwd">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">昵称:</label>
-            <input type="text" class="form-control" id="nickname">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">手机:</label>
-            <input type="text" class="form-control" id="phone">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="control-label">电话:</label>
-            <input type="text" class="form-control" id="tel">
-          </div>
-          <div class="form-group">
-            <label>角色</label>
-            <select id="seRole" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-              <option selected="selected" value="5">经纪人</option>
-              <option value="4">代理商</option>
-              <option value="3">会员单位</option>
-              <option value="2">交易所</option>
-              <option value="1">管理员</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>所属上级</label>
-            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-              <option selected="selected">Alabama</option>
-              <option>Alaska</option>
-              <option>California</option>
-              <option>Delaware</option>
-              <option>Tennessee</option>
-              <option>Texas</option>
-              <option>Washington</option>
-            </select>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" id="ckvaild" checked="checked"> 启用
-            </label>
-          </div>
-          <input type="hidden" id="modifyuid" >
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success" onclick="add()">保存</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ./Addnew Modal -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="newaccountModalLabel">添加账户</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">用户名:</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group openhide">
+                    <label class="control-label">密码:</label>
+                    <input type="text" class="form-control" id="pwd">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">昵称:</label>
+                    <input type="text" class="form-control" id="nickname">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">手机:</label>
+                    <input type="text" class="form-control" id="phone">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">电话:</label>
+                    <input type="text" class="form-control" id="tel">
+                </div>
+                <div class="form-group">
+                    <label>角色</label>
+                    <select id="seRole" class="form-control select2 select2-hidden-accessible seRole"
+                            style="width: 100%;" tabindex="-1" aria-hidden="true">
 
-  <!-- success alert Modal -->
-  <div class="modal modal-success fade" id="modal-success" style="display: none;">
+                    </select>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label>所属上级</label>-->
+                <!--<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">-->
+                <!--<option selected="selected">Alabama</option>-->
+                <!--<option>Alaska</option>-->
+                <!--<option>California</option>-->
+                <!--<option>Delaware</option>-->
+                <!--<option>Tennessee</option>-->
+                <!--<option>Texas</option>-->
+                <!--<option>Washington</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <label class="control-label">分成比例%:</label>
+                    <input type="number" class="form-control" id="proportions">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="ckvaild" checked="checked"> 启用
+                    </label>
+                </div>
+                <input type="hidden" id="modifyuid">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" onclick="add()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ./Addnew Modal -->
+<!-- success alert Modal -->
+<div class="modal modal-success fade" id="modal-success" style="display: none;">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加成功</h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加成功</h4>
+            </div>
         </div>
-      </div>
-      <!-- /.modal-content -->
+        <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-  </div>
-  <!-- ./ success alert Modal -->
-
-  <!-- danger alert Modal -->
-  <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+</div>
+<!-- ./ success alert Modal -->
+<!-- danger alert Modal -->
+<div class="modal modal-danger fade" id="modal-danger" style="display: none;">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span></button>
-          <h4 class="modal-title">添加失败</h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">添加失败</h4>
+            </div>
         </div>
-      </div>
-      <!-- /.modal-content -->
+        <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-  </div>
- <!-- ./ danger alert Modal -->
+</div>
+<!-- ./ danger alert Modal -->
+</div>
+<!-- ./wrapper -->
 
-  </div>
-  <!-- ./wrapper -->
-
-  <!-- jQuery 3 -->
-  <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- DataTables -->
-  <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-  <!-- SlimScroll -->
-  <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-  <!-- FastClick -->
-  <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../../dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="../dist/js/demo.js"></script> -->
-  <!-- date-range-picker -->
-  <script src="../../bower_components/moment/min/moment.min.js"></script>
-  <script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <!-- bootstrap datepicker -->
-  <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-  <!-- bootstrap time picker -->
-  <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-  <!-- AdminLTE for common -->
-  <script src="../../dist/js/const.js"></script>
-  <script src="../../dist/js/common.js"></script>
-  <!-- page script -->
-  <script>
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="../dist/js/demo.js"></script> -->
+<!-- bootstrap datepicker -->
+<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../../bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<!-- bootstrap time picker -->
+<!--<script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>-->
+<!-- AdminLTE for common -->
+<script src="../../dist/js/const.js"></script>
+<script src="../../dist/js/common.js"></script>
+<script src="../../dist/js/tools.js"></script>
+<!-- page script -->
+<script>
     $(function () {
-      $('#time_reg').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'YYYY/MM/DD h:mm A' })
-      $('#time_lastlogin').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'YYYY/MM/DD h:mm A' })
-      init();
-    })
+        $('.input-daterange').datepicker({
+            todayBtn: "linked",
+            language: "zh-CN",
+            orientation: "bottom auto",
+            clearBtn: true
+        });
+
+        init();
+        initrole();
+    });
 
     function init() {
-      $('#myModal').modal('show')
-      $.ajax({
-        type: "POST",
-        url: apiurl + "/v2/account",
-        contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token") },
-        success: function (data, status) {
-          // console.log(data);
-          if (data == "Unauthorized") {
-            location.href = validurl;
-            return;
-          }
-          else if (data != "") {
-            $("#tabledata").html("")
-            $.each(JSON.parse(data), function (n, value) {
-              var state = value.valid == "0" ? "正常" : "禁用";
-              $("#tabledata").append("<tr><td>" + value.nickname + "</td><td>" + value.phone + "</td><td>" + value.tel + "</td><td>" + state + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-ban-circle\"></i></td></tr>");
-            });
-            $('#maintable').DataTable()
-            $('#myModal').modal('hide')
-          }
+
+        var ctime_range = gettimerange("time_reg");
+        var ltime_range  = gettimerange("time_lastlogin");
+
+        $('#myModal').modal('show');
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/account",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {
+                'uid': localStorage.getItem("uid"),
+                'token': localStorage.getItem("token"),
+                'username': $("#s_uname").val().trim(),
+                'nickname': $("#s_nickname").val().trim(),
+                'phone': $("#s_phone").val().trim(),
+                'tel': $("#s_tel").val().trim(),
+                'roleID': $("#s_seRole option:selected").val(),
+                'valid': $("#s_vaild option:selected").val(),
+                'ctime':ctime_range,
+                'ltime':ltime_range
+            },
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data != "") {
+                    $("#tabledata").html("");
+                    $.each(JSON.parse(data), function (n, value) {
+                        var state = value.valid == "1" ? "正常" : "禁用";
+                        var ctime = UnixToDate(value.createtime, true, 8);
+                        var ltime = UnixToDate(value.lastLoginTime, true, 8);
+//              $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.uname + "</td><td>" + value.nickname + "</td><td>" + value.phone + "</td><td>" + value.tel + "</td><td>" + value.roleName + "</td><td>" + state + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i><a class=\"btn\" onclick=\"del(" + value.id + ")\"><i class=\"glyphicon glyphicon-ban-circle\"></i></td></tr>");
+                        $("#tabledata").append("<tr><td>" + value.id + "</td><td>" + value.uname + "</td><td>" + value.nickname + "</td><td>" + value.phone + "</td><td>" + value.tel + "</td><td>" + ctime + "</td><td>" + ltime + "</td><td>" + value.roleName + "</td><td>" + value.proportions + "%</td><td>" + value.supername + "</td><td>" + state + "</td><td style=\"width:10%\"><a class=\"btn\" onclick=\"modify(" + value.id + ")\"><i class=\"glyphicon glyphicon-edit\"></i></td></tr>");
+                    });
+                    $('#maintable').DataTable();
+                    $('#myModal').modal('hide');
+                }
+            }
+        });
+    }
+
+    function initrole() {
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/role",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token")},
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data != "") {
+                    $(".seRole").html("<option></option>");
+                    $.each(JSON.parse(data), function (n, value) {
+                        $(".seRole").append("<option value=\"" + value.id + "\">" + value.nickname + "</option>");
+                    });
+                }
+            }
+        });
+    }
+
+    function gettimerange(target) {
+        var rat = "";
+        var time_start = $("#" + target + " .start").val();
+        if (time_start != "") {
+            time_start = time_start.replace('年', '-').replace('月', '-').replace('日', '') + " 00:00:00";
+            time_start = DateToUnix(time_start);
+        } else
+            time_start = "0";
+        var time_end = $("#" + target + " .end").val();
+        if (time_end != "") {
+            time_end = time_end.replace('年', '-').replace('月', '-').replace('日', '') + " 00:00:00";
+            time_end = DateToUnix(time_end);
+            rat = time_end
+        } else
+            time_end = parseInt(time_start)+2592000;
+
+        if (parseInt(time_start)==0 && parseInt(time_end)==2592000)
+            return "";
+
+        rat = time_start+"~"+time_end;
+        return  rat
+
+    }
+
+    function searchreset() {
+        $("#s_uname").val("");
+        $("#s_nickname").val("");
+        $("#s_tel").val("");
+        $("#s_phone").val("");
+        $("#s_seRole option:selected").val("");
+        $("#s_vaild option:selected").val("");
+        $(".start").val("")
+        $(".end").val("")
+
+//      console.log(time1)
+//      var time2 = time1.replace('年','-').replace('月','-').replace('日','')+" 00:00:00";
+//      console.log(time2)
+//      var time3 = DateToUnix(time2)
+//      console.log(time3)
+
+//        var timereg_start = gettimerange("time_reg");
+//        console.log(timereg_start)
+
+//      console.log($("#time_reg .end").val())
+//      console.log($("#time_lastlogin .start").val())
+//      console.log($("#time_lastlogin .end").val())
+//
+
+    }
+
+    var IsAdd = false;
+    function openadd() {
+        clear();
+        $("#newaccountModalLabel").html("新增账户");
+        $('#newaccountModal').modal('show');
+        $('.openhide').show();
+        IsAdd = true;
+    }
+
+    function add() {
+
+        var operate = 0;
+        var urls = "/v2/account/add";
+        if (!IsAdd) {
+            operate = 1;
+            urls = "/v2/account/modify";
         }
-      });
+
+        var username = $("#username").val();
+        var pwd = $("#pwd").val();
+        var nickname = $("#nickname").val();
+        var tel = $("#tel").val();
+        var phone = $("#phone").val();
+        var roleID = $("#seRole option:selected").val();
+        var vaild = $("#ckvaild").prop('checked') == true ? 1 : 0;
+        var proportions = $("#proportions").val();
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/account/add",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {
+                'uid': localStorage.getItem("uid"),
+                'token': localStorage.getItem("token"),
+                'userid': $("#modifyuid").val(),
+                'username': username,
+                'pwd': pwd,
+                'nickname': nickname,
+                'tel': tel,
+                'phone': phone,
+                'roleID': roleID,
+                'valid': vaild,
+                'operate': operate,
+                'proportions':proportions
+            },
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data == "SUCCESS") {
+                    alert("操作成功！");
+                    $('#newaccountModal').modal('hide');
+//            $('#modal-success').modal('show');
+                    clear();
+                    init()
+                } else {
+                    alert("操作失败！" + data);
+//            $('#modal-danger').modal('show');
+                }
+            }
+        });
     }
 
-    var IsAdd=false
-    function openadd(){
-      $("#newaccountModalLabel").html("新增账户");
-      $('#newaccountModal').modal('show');
-      IsAdd=true
-    }
-
-    function add(){
-
-      var operate=0
-      var urls="/v2/account/add"
-      if(!IsAdd){
-        operate=1
-        urls="/v2/account/modify"
-      }
-
-      var username = $("#username").val();
-      var pwd = $("#pwd").val();
-      var nickname = $("#nickname").val();
-      var tel = $("#tel").val();
-      var phone = $("#phone").val();
-      var roleID = $("#seRole option:selected").val();
-      var vaild = $("#ckvaild").prop('checked')==true?1:0;
-      $.ajax({
-        type: "POST",
-        url: apiurl + "/v2/account/add",
-        contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'userid':$("#modifyuid").val(),'username':username,'pwd':pwd,'nickname':nickname,'tel':tel,'phone':phone,'roleID':roleID,'valid':vaild,'operate':operate },
-        success: function (data, status) {
-          // console.log(data);
-          if (data == "Unauthorized") {
-            location.href = validurl;
-            return;
-          }
-          else if (data == "SUCCESS") {
-            $('#newaccountModal').modal('hide');
-            $('#modal-success').modal('show');
-            clear();
-            init()
-          }else{
-            $('#modal-danger').modal('show');
-          }
-        }
-      });
-    }
-
-    function clear(){
-      $("#username").val("");
-      $("#pwd").val("");
-      $("#nickname").val("");
-      $("#tel").val("");
-      $("#phone").val("");
+    function clear() {
+        $("#username").val("");
+        $("#pwd").val("888888");
+        $("#nickname").val("");
+        $("#tel").val("");
+        $("#phone").val("");
+        $("#seRole").val("");
     }
 
     function modify(id) {
-      // console.log("modify id is " + id);
-      $("#modifyuid").val(id);
+        // console.log("modify id is " + id);
+        $("#modifyuid").val(id);
 
-      $.ajax({
-        type: "POST",
-        url: apiurl + "/v2/account/detail",
-        contentType: "application/x-www-form-urlencoded;charset=utf-8",
-        data: { 'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"),'userid':id },
-        success: function (data, status) {
-          // console.log(data);
-          if (data == "Unauthorized") {
-            location.href = validurl;
-            return;
-          }
-          else if (data != "") {
-            $.each(JSON.parse(data), function (n, value) {
-              $("#username").val(value.uname);
-              $("#nickname").val(value.nickname);
-              $("#tel").val(value.tel);
-              $("#phone").val(value.phone);
-              $("#seRole option:selected").val(value.roleID);
-            });
-            $("#newaccountModalLabel").html("修改账户");
-            $('#newaccountModal').modal('show')
-            IsAdd=false
-          }
-        }
-      });
+        $.ajax({
+            type: "POST",
+            url: apiurl + "/v2/account/detail",
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            data: {'uid': localStorage.getItem("uid"), 'token': localStorage.getItem("token"), 'userid': id},
+            success: function (data, status) {
+                // console.log(data);
+                if (data == "Unauthorized") {
+                    location.href = validurl;
+                    return;
+                }
+                else if (data != "") {
+                    $.each(JSON.parse(data), function (n, value) {
+                        $("#username").val(value.uname);
+                        $("#nickname").val(value.nickname);
+                        $("#tel").val(value.tel);
+                        $("#phone").val(value.phone);
+                        $("#seRole").val(value.roleID);
+                        $("#proportions").val(value.proportions);
+                    });
+                    $("#newaccountModalLabel").html("修改账户");
+                    $('#newaccountModal').modal('show');
+                    $('.openhide').hide();
+                    IsAdd = false;
+                }
+            }
+        });
 
     }
 
     var del_id = 0;
     function del(id) {
-      $('#sp_confirm').text("确定要禁用选择的账户吗？");
-      $('#confirmModal').modal('show')
-      del_id=id;
-      console.log("del id is " + id);
+        $('#sp_confirm').text("确定要禁用选择的账户吗？");
+        $('#confirmModal').modal('show');
+        del_id = id;
+        console.log("del id is " + id);
     }
     function delSure() {
-      $('#confirmModal').modal('hide')
-      console.log("del_id is " + del_id);
+        $('#confirmModal').modal('hide');
+        console.log("del_id is " + del_id);
     }
 
-  </script>
+</script>
 </body>
 
 </html>
